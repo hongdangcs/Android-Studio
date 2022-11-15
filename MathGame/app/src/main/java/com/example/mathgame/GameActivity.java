@@ -79,8 +79,8 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 pauseTimer();
                 answer.setText("");
-                if(userLife==0){
-                    Toast.makeText(getApplicationContext(), "Game Over!",Toast.LENGTH_LONG).show();
+                if (userLife == 0) {
+                    Toast.makeText(getApplicationContext(), "Game Over!", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(GameActivity.this, ResultActivity.class);
                     intent.putExtra("score", userScore);
                     startActivity(intent);
@@ -111,8 +111,30 @@ public class GameActivity extends AppCompatActivity {
     public void gameContinue() {
         no1 = random.nextInt(100);
         no2 = random.nextInt(100);
-        question.setText(no1 + " + " + no2);
-        correctAns = no1 + no2;
+        Intent intent = getIntent();
+        int a = intent.getIntExtra("calculation", 0);
+        switch (a) {
+            case 20:
+                question.setText(no1 + " + " + no2);
+                correctAns = no1 + no2;
+                break;
+            case 40:
+                while (no2 > no1) {
+                    no2 = random.nextInt(100);
+                }
+                question.setText(no1 + " - " + no2);
+                correctAns = no1 - no2;
+                break;
+            case 60:
+                no2 = random.nextInt(11);
+
+                no1 = random.nextInt(11);
+
+                question.setText(no1 + " x " + no2);
+                correctAns = no1 * no2;
+                break;
+
+        }
         startTimer();
         nextToOk();
     }
