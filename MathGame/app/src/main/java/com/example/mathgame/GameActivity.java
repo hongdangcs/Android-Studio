@@ -114,24 +114,30 @@ public class GameActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int a = intent.getIntExtra("calculation", 0);
         switch (a) {
-            case 20:
+            case 1:
                 question.setText(no1 + " + " + no2);
                 correctAns = no1 + no2;
                 break;
-            case 40:
+            case 2:
                 while (no2 > no1) {
                     no2 = random.nextInt(100);
                 }
                 question.setText(no1 + " - " + no2);
                 correctAns = no1 - no2;
                 break;
-            case 60:
+            case 3:
                 no2 = random.nextInt(11);
 
                 no1 = random.nextInt(11);
 
                 question.setText(no1 + " x " + no2);
                 correctAns = no1 * no2;
+            case 4:
+                no2 = random.nextInt(11);
+                no1 = random.nextInt(11);
+                int mulResult = no1*no2;
+                question.setText(mulResult + " / " + no2);
+                correctAns = no1;
                 break;
 
         }

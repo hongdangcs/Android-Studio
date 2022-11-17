@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Button addition;
     Button subtraction;
     Button multiplication;
+    Button division;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
         addition = findViewById(R.id.buttonAdd);
         subtraction = findViewById(R.id.buttonSub);
         multiplication = findViewById(R.id.buttonMul);
+        division = findViewById(R.id.buttonDiv);
 
         addition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                intent.putExtra("calculation", 20);
+                intent.putExtra("calculation", 1);
                 startActivity(intent);
                 finish();
             }
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                intent.putExtra("calculation", 40);
+                intent.putExtra("calculation", 2);
                 startActivity(intent);
                 finish();
             }
@@ -44,7 +46,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                intent.putExtra("calculation", 60);
+                intent.putExtra("calculation", 3);
+                startActivity(intent);
+                finish();
+            }
+        });
+        division.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                intent.putExtra("calculation", 4);
                 startActivity(intent);
                 finish();
             }

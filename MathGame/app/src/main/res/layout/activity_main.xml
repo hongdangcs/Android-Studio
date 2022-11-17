@@ -38,4 +38,14 @@
         android:layout_marginRight="16dp"
         android:backgroundTint="#C187B9DA"
         android:text="Multiplication" />
+
+    <Button
+        android:id="@+id/buttonDiv"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="#C187B9DA"
+        android:text="Division" />
 </LinearLayout>
