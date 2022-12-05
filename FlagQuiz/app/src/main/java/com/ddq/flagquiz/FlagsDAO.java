@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class FlagsDAO
 {
-    public ArrayList<FlagsModel> getRandomTenQuestion (FlagsDatabase fd){
+    public  ArrayList<FlagsModel> getRandomTenQuestion (FlagsDatabase fd){
         ArrayList<FlagsModel> models = new ArrayList<>();
         SQLiteDatabase liteDatabase = fd.getReadableDatabase();
         Cursor cursor = liteDatabase.rawQuery("select * from flagquizgametable order by random () limit 10", null);
@@ -35,6 +35,10 @@ public class FlagsDAO
         return models;
     }
 
-
+    public int getInt(FlagsDatabase fd){
+        SQLiteDatabase sqLiteDatabase = fd.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from progress", null);
+        return cursor.getCount();
+    }
 
 }

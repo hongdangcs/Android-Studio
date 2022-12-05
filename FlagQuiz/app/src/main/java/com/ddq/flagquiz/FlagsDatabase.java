@@ -9,23 +9,25 @@ import androidx.annotation.Nullable;
 public class FlagsDatabase extends SQLiteOpenHelper {
 
     public FlagsDatabase(@Nullable Context context) {
-        super(context, "flagquiz.db", null, 1);
+        super(context, "ddqbraintrain.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL("CREATE TABLE IF NOT EXISTS \"flagquizgametable\" (\n" +
-                "\t\"id\"\tINTEGER,\n" +
-                "\t\"name\"\tTEXT,\n" +
-                "\t\"image\"\tTEXT\n" +
-                ");");
+        db.execSQL("CREATE TABLE IF NOT EXISTS \"progress\" (\n" +
+                "\t\"game_id\"\tINTEGER,\n" +
+                "\t\"game_name\"\tTEXT,\n" +
+                "\t\"max_score\"\tINTEGER,\n" +
+                "\t\"user_score\"\tINTEGER,\n" +
+                "\t\"complete_status\"\tINTEGER\n" +
+                ")");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("drop table if exists flagquizgametable");
+        db.execSQL("drop table if exists progress");
         onCreate(db);
 
     }

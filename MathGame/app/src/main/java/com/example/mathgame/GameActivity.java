@@ -100,7 +100,8 @@ public class GameActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String ans = answer.getText().toString();
-            okButton.setEnabled(!ans.isEmpty());
+
+            okButton.setEnabled(ans.length()>1);
         }
 
         @Override
@@ -151,9 +152,7 @@ public class GameActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = millisUntilFinished / 1000;
                 updateText();
-
             }
-
             @Override
             public void onFinish() {
                 time_counter = false;
@@ -171,13 +170,11 @@ public class GameActivity extends AppCompatActivity {
 
     public void updateText() {
         time.setText("" + timeLeft);
-
     }
 
     public void pauseTimer() {
         timer.cancel();
         time_counter = false;
-
     }
 
     public void resetTimer() {

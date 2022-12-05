@@ -55,8 +55,7 @@ public class QuizActivity extends AppCompatActivity {
         btn4 = findViewById(R.id.button4);
 
         textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
-
-
+    
         loadQuestion();
 
         btn1.setOnClickListener(new View.OnClickListener() {

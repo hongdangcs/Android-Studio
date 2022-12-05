@@ -18,7 +18,7 @@ public class DatabaseCopyHelper extends SQLiteOpenHelper  {
 
     String DB_PATH =null;
 
-    private static String DB_NAME = "flagquiz.db";
+    private static String DB_NAME = "ddqbraintrain.db";
 
     private SQLiteDatabase myDataBase;
 
