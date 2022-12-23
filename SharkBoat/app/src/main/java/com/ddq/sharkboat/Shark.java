@@ -11,70 +11,48 @@ import com.ddq.sharkboat.R;
 import java.util.Random;
 
 public class Shark {
-    private Context context;
-    private Bitmap image;
-    private float x;
-    private float y;
-    private float velocityX;
-    private float velocityY;
-    private float width;
-    private float height;
-    private float screenWidth;
-    private float screenHeight;
-    private Random random;
+    private int x;
+    private int y;
+    private Bitmap sharkImage;
 
-    public Shark(Context context) {
-        this.context = context;
-        random = new Random();
-        setRandomPosition();
+    public Shark(Context context, int x, int y) {
+        this.x = x;
+        this.y = y;
+        Bitmap originalImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.shark);
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        float scaleFactor = 0.05f; // Change this value to adjust the size of the image
+        sharkImage = Bitmap.createScaledBitmap(originalImage, (int)(width * scaleFactor), (int)(height * scaleFactor), false);
     }
 
-    public void setRandomPosition() {
-        // Set a random position for the shark
-        x = random.nextInt((int) screenWidth);
-        y = random.nextInt((int) screenHeight);
+    public void draw(Canvas canvas) {
+        canvas.drawBitmap(sharkImage, x, y, null);
     }
 
-    public void setVelocity(float velocityX, float velocityY) {
-        this.velocityX = velocityX;
-        this.velocityY = velocityY;
+    public void move() {
+        // Move the shark in a random direction
+    }
+    public int getWidth() {
+        return sharkImage.getWidth();
     }
 
-    public void setScreenSize(float screenWidth, float screenHeight) {
-        this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
+    public int getHeight() {
+        return sharkImage.getHeight();
     }
 
-    public void setImage(int resourceId) {
-        image = BitmapFactory.decodeResource(context.getResources(), R.drawable.shark);
-        width = image.getWidth();
-        height = image.getHeight();
-    }
-
-    public void updatePosition() {
-        // Update the position of the shark based on its velocity
-        x += velocityX;
-        y += velocityY;
-    }
-
-    public void draw(Canvas canvas, Paint paint) {
-        // Draw the image
-        canvas.drawBitmap(image, x, y, paint);
-    }
-
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
         return y;
     }
 
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
+    public void setY(int y) {
+        this.y = y;
     }
 }
